@@ -66,20 +66,21 @@ export default class DaySummary extends React.Component {
     var totalCarbs = 0;
     var totalFat = 0;
 
+    var nutritionInfo = this.state.nutritionInfo;
     for (var i=0; i<this.state.foodItems.length; i++) {
       FoodList.push(
         <FoodItem
           index={i}
           key={i}
           food={this.state.foodItems[i]}
-          nutritionInfo={this.state.nutritionInfo}
+          nutritionInfo={nutritionInfo}
           name={this.state.foodItems[i].food || this.state.foodItems[i]}
           deleteItem={this.deleteItem.bind(this)}
           />
       );
-      totalCalories += parseInt(this.state.nutritionInfo[this.state.foodItems[i]].calories);
-      totalCarbs += parseInt(this.state.nutritionInfo[this.state.foodItems[i]].carbs);
-      totalFat += parseInt(this.state.nutritionInfo[this.state.foodItems[i]].fat);
+      totalCalories += parseInt(nutritionInfo[this.state.foodItems[i]].calories);
+      totalCarbs += parseInt(nutritionInfo[this.state.foodItems[i]].carbs);
+      totalFat += parseInt(nutritionInfo[this.state.foodItems[i]].fat);
     }
 
     var AddItem = (
@@ -93,7 +94,7 @@ export default class DaySummary extends React.Component {
     if (this.state.addFormVisible) {
       AddItem = (
         <AddItemForm
-          nutritionInfo={this.state.nutritionInfo}
+          nutritionInfo={nutritionInfo}
           foodItems={this.state.foodItems}
           updateState={this.updateState.bind(this)}
           />
@@ -130,6 +131,7 @@ export default class DaySummary extends React.Component {
     var Table = this.createTable();
     if (this.state.date.getTime() > new Date(Date.now()).getTime()) {
       Table = (<span>Nothing to see yet!</span>);
+      // future days
     }
 
     return (

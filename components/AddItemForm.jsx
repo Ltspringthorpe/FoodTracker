@@ -6,7 +6,7 @@ export default class AddItemForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropDownItem: "cust"
+      dropDownItem: "custom"
     }
   }
 
@@ -18,14 +18,15 @@ export default class AddItemForm extends React.Component {
   submitAddItem(event) {
     event.preventDefault();
     var errors = false;
-    //this is horrible, but I can't put a form inside a table
-    var food = event.currentTarget.parentElement.parentElement.firstChild.firstChild.value;
+    var eventTarget = event.currentTarget.parentElement.parentElement;
+    var food = eventTarget.firstChild.firstChild.value;
     if (!food) { errors = true };
+
     if (!this.props.nutritionInfo[food]) {
       var nutritionInfo = this.props.nutritionInfo;
-      var calories = event.currentTarget.parentElement.parentElement.children[1].firstChild.value || "0";
-      var carbs = event.currentTarget.parentElement.parentElement.children[2].firstChild.value || "0";
-      var fat = event.currentTarget.parentElement.parentElement.children[3].firstChild.value || "0";
+      var calories = eventTarget.children[1].firstChild.value || "0";
+      var carbs = eventTarget.children[2].firstChild.value || "0";
+      var fat = eventTarget.children[3].firstChild.value || "0";
 
       if ((!parseInt(calories) && calories !== "0") ||
           (!parseInt(carbs) && carbs !== "0") ||
@@ -46,7 +47,7 @@ export default class AddItemForm extends React.Component {
       var foodItems = this.props.foodItems;
       foodItems.push(food);
       this.setState({
-        dropDownItem: "cust"
+        dropDownItem: "custom"
       });
       this.props.updateState({
         foodItems: foodItems,
@@ -59,11 +60,11 @@ export default class AddItemForm extends React.Component {
 
   cancelAddItem() {
     this.props.updateState({ addFormVisible: false });
-    this.setState({ dropDownItem: "cust" });
+    this.setState({ dropDownItem: "custom" });
   }
 
   render() {
-    var dropdownOptions = [<option key="cust" value="cust">Custom</option>];
+    var dropdownOptions = [<option key="custom" value="custom">Custom</option>];
     Object.keys(this.props.nutritionInfo).forEach(function(food) {
       dropdownOptions.push(
         <option key={food} value={food}>{food}</option>)
@@ -71,7 +72,7 @@ export default class AddItemForm extends React.Component {
 
     var AddItem;
     var CustomItem;
-    if (this.state.dropDownItem !== "cust") {
+    if (this.state.dropDownItem !== "custom") {
       AddItem = (
         <tr>
           <td><select onChange={this.handleSelect.bind(this)}>{dropdownOptions}</select></td>
@@ -84,7 +85,8 @@ export default class AddItemForm extends React.Component {
           </td>
         </tr>
       );
-      CustomItem = (<tr></tr>);
+
+      CustomItem = <tr></tr>;
 
     } else {
       AddItem = (
@@ -96,6 +98,7 @@ export default class AddItemForm extends React.Component {
           <td></td>
         </tr>
       );
+
       CustomItem = (
         <tr>
           <td><input className="name-input" placeholder="name"/></td>

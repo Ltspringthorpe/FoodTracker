@@ -66,10 +66,18 @@ export default class Calendar extends React.Component {
     var formattedDate = this.formatDate(this.state.date);
     var options = { weekday:'long', day:'numeric', month:'long'};
 
-    var TodayButton = <div className="today-button-none"></div>;
+    var disabled = true;
     if (this.state.date.getTime() !== this.getToday().getTime()) {
-      TodayButton = <button className="today-button" onClick={this.pickDate.bind(this)}>Today</button>
+      disabled = false;
+      // disable "today" button if it's already today
     }
+    var TodayButton = (
+      <button className="today-button"
+        disabled={disabled}
+        onClick={this.pickDate.bind(this)}>
+        Today
+      </button>
+    );
 
     var minDate = new Date();
     minDate.setFullYear(2000, 0, 1);

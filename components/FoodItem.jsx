@@ -22,7 +22,9 @@ export default class FoodItem extends React.Component {
     var rowColor = 'blue';
     if (this.props.index % 2) {
       rowColor = 'white';
+      // alternate row color
     }
+
     var food = this.state.food;
     if (this.props.nutritionInfo[this.state.food]) {
       food = this.props.nutritionInfo[this.state.food];
