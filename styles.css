@@ -1,0 +1,146 @@
+html {
+  height: 100%;
+}
+
+#root {
+  background-color: #f9f9f9;
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+}
+.header {
+  background-color: #0070BF;
+  color: white;
+  font-size: 18pt;
+  padding: 30px;
+}
+.date-bar {
+  background-color: #0a5282;
+  padding-left: 125px;
+}
+.date-string {
+  color: white;
+  display: inline-block;
+  height: 30px;
+  margin: 0 20px;
+  width: 175px;
+}
+.date-nav-button {
+  font-weight: bold;
+  height: 44px;
+  margin: 0;
+  width: 40px;
+}
+.date-picker {
+  height: 40px;
+  margin-left: 15px;
+  padding: 0 20px;
+}
+.date-picker::-webkit-clear-button,
+.date-picker::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+.today-button {
+  display: inline-block;
+  height: 44px;
+  margin-left: 15px;
+  padding: 0 15px;
+}
+.today-button-none {
+  display: none;
+}
+.day-summary {
+  background: white;
+  border: 1px solid #0a5282;
+  border-radius: 15px;
+  margin: 50px 100px;
+  padding: 50px;
+  width: 66%;
+}
+
+table {
+  font-size: 14pt;
+}
+table tr td, table tr th {
+  padding: 0;
+}
+.table-head tr{
+  height: 50px;
+  text-align: left;
+  vertical-align: middle;
+}
+.food-column {
+  width: 200px;
+}
+.calories-column, .carbs-column, .delete-column {
+  width: 110px;
+}
+.fat-column {
+  width: 60px;
+}
+.add-item-button {
+  height: 30px;
+  margin-top: 15px;
+}
+select {
+  height: 30px;
+  width: 152px;
+}
+.delete-button, .add-item-button, button[type="submit"] {
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px gray;
+}
+button:active {
+  box-shadow: -1px -1px 1px gray;
+}
+button:focus {
+  outline: black;
+}
+button:hover {
+  color: #0a5282;
+  outline: black;
+}
+.name-input {
+  height: 25px;
+  padding-left: 3px;
+  width: 145px;
+}
+.calories-input, .carbs-input {
+  height: 25px;
+  padding-left: 3px;
+  width: 75px;
+}
+.fat-input {
+  height: 25px;
+  padding-left: 3px;
+  width: 45px;
+}
+.add-cancel {
+  width: 110px;
+}
+.add-cancel button {
+  margin: 0 3px;
+  height: 30px;
+}
+.blue {
+  background-color: #f4f8ff;
+}
+.always-white {
+  background-color: white;
+}
+.totals tr td {
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  height: 30px;
+  vertical-align: bottom;
+}
+.totals td:last-child {
+  border: none;
+}
+tfoot tr:first-child{
+  height: 75px;
+  vertical-align: bottom;
+}
